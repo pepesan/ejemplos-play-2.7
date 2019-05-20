@@ -1,0 +1,22 @@
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.
+ *@
+@import entities.User
+@import scala.collection.mutable.ListBuffer
+@(listado: ListBuffer[User])
+
+@*
+ * Call the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+@main("Welcome to Play") {
+    <p><a href="/user/add">Add</a></p>
+    <h1>Listado</h1>
+    <ul>
+    @for(item <- listado) {
+     <li>@item.id : @item.name <a href='/user/@item.id'>Show</a> </li>
+    }
+    </ul>
+}

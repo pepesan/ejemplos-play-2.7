@@ -1,0 +1,35 @@
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.
+ *@
+@import entities.UserForm
+@import helper._
+@(form: Form[UserForm], postUrl: Call)(implicit request: MessagesRequestHeader)
+@*
+ * Call the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+@main("Welcome to Play") {
+
+
+ <h1>Blog Post</h1>
+
+
+ @* Global errors are not tied to any particular form field *@
+ @if(form.hasGlobalErrors) {
+  @form.globalErrors.map { error: FormError =>
+   <div>
+    Error: @error.key: @error.message
+   </div>
+  }
+ }
+
+ @* “'id” in these elements is the css `id` field that will be shown *@
+  @helper.form(postUrl, 'id -> "user_edit_form") {
+
+  @helper.inputText(form("name"))
+
+  <button>Save</button>
+ }
+}

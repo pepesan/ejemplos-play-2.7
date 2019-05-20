@@ -1,0 +1,19 @@
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.
+ *@
+@import entities.User
+@(user: User)
+
+@*
+ * Call the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+@main("Welcome to Play") {
+
+    <h1>Show</h1>
+    <h2>@user.id: @user.name</h2>
+    <p><a  href="/user/list">Volver</a> </p>
+
+}
