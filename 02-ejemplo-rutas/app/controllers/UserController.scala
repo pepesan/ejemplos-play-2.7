@@ -22,6 +22,9 @@ class UserController @Inject()(
   private val logger = play.api.Logger(this.getClass)
 
   var listado: ListBuffer[User]= new ListBuffer[User]()
+  for (i <- 1 to 5){
+    listado += new User(i,"Pepe" + i)
+  }
   val form = Form(
     mapping(
       "name" -> nonEmptyText,
@@ -39,9 +42,7 @@ class UserController @Inject()(
   }
   def list = Action {
     // Presenta un listado
-    for (i <- 1 to 5){
-      listado += new User(i,"Pepe" + i)
-    }
+
     Ok(views.html.usuarioList(listado))
   }
 

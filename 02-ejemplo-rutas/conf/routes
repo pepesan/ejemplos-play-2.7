@@ -11,7 +11,6 @@ GET     /request                          controllers.RequestController.index
 GET     /resultado                          controllers.RequestController.resultado
 # Redirección
 GET     /redir                          controllers.RequestController.redir
-
 # Página de usuario
 GET     /user                           controllers.UserController.index
 # Página de listado de usuarios
