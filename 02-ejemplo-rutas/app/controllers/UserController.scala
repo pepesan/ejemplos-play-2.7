@@ -73,15 +73,22 @@ class UserController @Inject()(
   }
 
   def show(id: Int) = Action {
-    var user: User= null
-    listado.foreach(item =>
-      if(item.id==id){
-        user=item
+    var user: User= new User(0,"")
+    // por cada elemento del listado ejecuta una función
+    listado.foreach({
+      // la función tiene un parámetro de entrada que el item elegido
+      item =>
+        //código de la función que quieres hacer por cada item
+      {
+        if (item.id == id) {
+          user = item
+        }
       }
-    )
-    if (user==null){
-      user= new User(0,"")
     }
+    )
+
+    //listado.foreach(item => if (item.id == id) user = item)
+
     Ok(views.html.usuarioShow(user))
   }
 
