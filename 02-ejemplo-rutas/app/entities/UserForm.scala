@@ -1,5 +1,4 @@
 package entities
 
-case class UserForm(n: String) {
-  var name:String = n
+case class UserForm(name: String) {
 }

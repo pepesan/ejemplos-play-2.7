@@ -25,11 +25,6 @@ class UserController @Inject()(
   for (i <- 1 to 5){
     listado += new User(i,"Pepe" + i)
   }
-  val form = Form(
-    mapping(
-      "name" -> nonEmptyText,
-    )(UserForm.apply)(UserForm.unapply)
-  )
   /**
     * Create an Action to render an HTML page with a welcome message.
     * The configuration in the `routes` file means that this method
@@ -38,24 +33,33 @@ class UserController @Inject()(
     */
   def index = Action {
     // Presenta un dato
-    Ok(views.html.usuarioIndex("Página de Usuario"))
+    Ok(views.html.usuario.Index("Página de Usuario"))
   }
   def list = Action {
     // Presenta un listado
 
-    Ok(views.html.usuarioList(listado))
+    Ok(views.html.usuario.List(listado))
   }
 
+  // objeto del formulario a presentar
+  val form = Form(
+    // mapeo de campos del formulario
+    mapping(
+      //nombre de campo y criterios de validación
+      "name" -> nonEmptyText,
+      // Tipo de dato a usar dentro del formulario
+    )(UserForm.apply)(UserForm.unapply)
+  )
   private val saveUrl = routes.UserController.save()
   def addForm = Action { implicit request =>
     // pass an unpopulated form to the template
-    Ok(views.html.usuarioForm(form, saveUrl))
+    Ok(views.html.usuario.Form(form, saveUrl))
   }
   def save = Action { implicit request =>
     val errorFunction = { formWithErrors: Form[UserForm] =>
       // this is the bad case, where the form had validation errors.
       // show the user the form again, with the errors highlighted.
-      BadRequest(views.html.usuarioForm(formWithErrors, saveUrl))
+      BadRequest(views.html.usuario.Form(formWithErrors, saveUrl))
     }
 
     val successFunction = { data: UserForm =>
@@ -89,7 +93,7 @@ class UserController @Inject()(
 
     //listado.foreach(item => if (item.id == id) user = item)
 
-    Ok(views.html.usuarioShow(user))
+    Ok(views.html.usuario.Show(user))
   }
 
 }

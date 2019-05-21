@@ -1,12 +1,16 @@
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.
+ *@
+@(message: String)
 
 @*
  * Call the `main` template with two arguments. The first
  * argument is a `String` with the title of the page, the second
  * argument is an `Html` object containing the body of the page.
  *@
-@(content: Html)
-<nav>
-    <ul>
-        <li><a href="/">Home</a> </li>
-    </ul>
-</nav>
+@usuario.Layout(message) {
+
+    <h1>Página de usuario</h1>
+
+}
