@@ -60,7 +60,7 @@ class UserController @Inject()(
 
     val successFunction = { data: UserForm =>
       // this is the SUCCESS case, where the form was successfully parsed as a BlogPost
-      val user = new User(listado.length,data.name)
+      val user = new User(listado.length+1,data.name)
       listado.append(user)
       Redirect(routes.UserController.list()).flashing("info" -> "Blog post added (trust me)")
     }
