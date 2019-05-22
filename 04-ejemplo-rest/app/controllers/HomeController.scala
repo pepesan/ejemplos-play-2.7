@@ -23,7 +23,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
    * a path of `/`.
    */
 
-   def index() = Action { implicit request: Request[AnyContent] =>
+  def index() = Action { implicit request: Request[AnyContent] =>
     Ok(Json.obj("campo"-> "Valor"))
   }
   def mapa() = Action { implicit request: Request[AnyContent] =>
