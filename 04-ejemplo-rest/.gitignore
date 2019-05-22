@@ -6,6 +6,6 @@ target
 /.project
 /.settings
 /RUNNING_PID
-.gradle
-.g8
+/.gradle
+/.g8
 gradle

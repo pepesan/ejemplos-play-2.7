@@ -9,5 +9,13 @@ GET     /mapa                           controllers.HomeController.mapa
 GET     /objeto                           controllers.HomeController.objeto
 POST     /objeto                           controllers.HomeController.cogeObjeto
 POST     /persona                           controllers.HomeController.cogePersona
+
+GET     /person                       controllers.PersonController.index
+POST     /person                       controllers.PersonController.addUser
+GET     /person/:id                       controllers.PersonController.deleteUser(id: Long)
+GET     /api/person                       controllers.RestController.index
+POST     /api/person                       controllers.RestController.add
+GET     /api/person/:id                      controllers.RestController.getUser(id: Long)
+DELETE     /api/person/:id                      controllers.RestController.deleteUser(id: Long)
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
