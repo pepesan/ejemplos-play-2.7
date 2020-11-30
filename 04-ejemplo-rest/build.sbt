@@ -7,6 +7,11 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala, SwaggerPlugin)
 
 scalaVersion := "2.12.8"
 
+
+resolvers += "Maven Central Server" at "https://repo1.maven.org/maven2"
+
+resolvers += "Typesafe Server" at "https://repo.typesafe.com/typesafe/releases"
+
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "4.0.2" % Test
 libraryDependencies += "com.typesafe.play" %% "play-json" % "2.7.2"
