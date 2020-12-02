@@ -7,6 +7,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
 scalaVersion := "2.12.8"
 
+PlayKeys.devSettings := Seq("play.server.http.port" -> "9003")
 
 resolvers += "Maven Central Server" at "https://repo1.maven.org/maven2"
 
