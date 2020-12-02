@@ -21,9 +21,9 @@ DELETE     /api/person/:id                      controllers.RestController.delet
 # Mongo API
 GET     /api/mongo/post                       controllers.RestMongoController.listPost
 POST     /api/mongo/post                       controllers.RestMongoController.add
-GET     /api/mongo/post/:id                      controllers.RestMongoController.read(id: reactivemongo.bson.BSONObjectID)
-POST     /api/mongo/post/:id                      controllers.RestMongoController.update(id: reactivemongo.bson.BSONObjectID)
-DELETE     /api/mongo/post/:id                      controllers.RestMongoController.delete(id: reactivemongo.bson.BSONObjectID)
+GET     /api/mongo/post/:id                      controllers.RestMongoController.read(id:reactivemongo.api.bson.BSONObjectID)
+POST     /api/mongo/post/:id                      controllers.RestMongoController.update(id: reactivemongo.api.bson.BSONObjectID)
+DELETE     /api/mongo/post/:id                      controllers.RestMongoController.delete(id: reactivemongo.api.bson.BSONObjectID)
 
 ### NoDocs ###
 GET   /docs/swagger-ui/*file        controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)

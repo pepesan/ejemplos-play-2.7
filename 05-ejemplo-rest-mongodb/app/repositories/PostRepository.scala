@@ -8,9 +8,11 @@ import models.Post
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import reactivemongo.play.json._
-import reactivemongo.bson.{BSONDocument, BSONObjectID}
+import reactivemongo.bson.{BSONDocument}
+import reactivemongo.api.bson.BSONObjectID
 import reactivemongo.api.{ReadPreference, Cursor}
 import reactivemongo.api.commands.WriteResult
+
 
 class PostRepository @Inject()(
   implicit ec: ExecutionContext,
@@ -20,34 +22,34 @@ class PostRepository @Inject()(
 
   def list (limit: Int = 100): Future[Seq[Post]] = {
     collection.flatMap(
-      _.find(BSONDocument())
+      _.find(Json.obj(),Option.empty[JsObject])
         .cursor[Post](ReadPreference.primary)
         .collect[Seq](limit,Cursor.FailOnError[Seq[Post]]())
       )
   }
   def create (post: Post): Future[WriteResult] ={
-    collection.flatMap(_.insert(post))
+    collection.flatMap(_.insert(ordered = false).one(post))
   }
   def createJson (post: JsObject) ={
     collection.flatMap(_.insert.one(post))
   }
   def read (id: BSONObjectID): Future[Option[Post]] = {
-    collection.flatMap(_.find(BSONDocument("_id" -> id)).one[Post])
+    collection.flatMap(_.find(Json.obj("_id" -> id.stringify),Option.empty[JsObject]).one[Post])
   }
   def update(id: BSONObjectID, post:JsObject): Future[Option[Post]] = {
     collection.flatMap(_.findAndUpdate(
-        BSONDocument("_id" -> id),
+        BSONDocument("_id" -> id.stringify),
         BSONDocument(
           f"$$set" -> post
         ),
-        true
+      true
       ).map(_.result[Post])
     )
   }
 
   def destroy(id: BSONObjectID): Future[Option[Post]] = {
     collection.flatMap(
-      _.findAndRemove(BSONDocument("_id" -> id)).map(_.result[Post])
+      _.findAndRemove(BSONDocument("_id" -> id.stringify),Option.empty[JsObject]).map(_.result[Post])
     )
   }
 

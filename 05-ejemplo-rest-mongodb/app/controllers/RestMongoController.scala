@@ -9,7 +9,8 @@ import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import reactivemongo.play.json._
 import reactivemongo.play.json.collection._
-import reactivemongo.bson.{BSONDocument, BSONObjectID}
+import reactivemongo.bson.{BSONDocument}
+import reactivemongo.api.bson.BSONObjectID
 import repositories.PostRepository
 import models.Post
 
