@@ -5,6 +5,7 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
+GET     /nueva                           controllers.HomeController.nueva
 # Gestión de una petición
 GET     /request                          controllers.RequestController.index
 # Gestión del resultado

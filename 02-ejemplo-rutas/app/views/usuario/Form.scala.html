@@ -29,6 +29,7 @@
   @helper.form(postUrl, 'id -> "user_edit_form") {
 
   @helper.inputText(form("name"))
+   @helper.inputText(form("iden"))
    @CSRF.formField
    <button>Save</button>
  }

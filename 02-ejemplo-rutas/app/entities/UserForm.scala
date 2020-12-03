@@ -1,4 +1,4 @@
 package entities
 
-case class UserForm(name: String) {
+case class UserForm(name: String, iden: Int) {
 }

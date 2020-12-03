@@ -47,6 +47,7 @@ class UserController @Inject()(
     mapping(
       //nombre de campo y criterios de validación
       "name" -> nonEmptyText,
+      "iden" -> number(min = 10, max = 100)
       // Tipo de dato a usar dentro del formulario
     )(UserForm.apply)(UserForm.unapply)
   )
@@ -64,7 +65,7 @@ class UserController @Inject()(
 
     val successFunction = { data: UserForm =>
       // this is the SUCCESS case, where the form was successfully parsed as a BlogPost
-      val user = new User(listado.length+1,data.name)
+      val user = new User(data.iden,data.name)
       listado.append(user)
       Redirect(routes.UserController.list()).flashing("info" -> "Blog post added (trust me)")
     }
