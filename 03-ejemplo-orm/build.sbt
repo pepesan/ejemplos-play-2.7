@@ -17,5 +17,6 @@ libraryDependencies ++= Seq(
   guice,
   "com.typesafe.play" %% "play-slick" % "4.0.0",
   "com.typesafe.play" %% "play-slick-evolutions" % "4.0.0",
-  "mysql" % "mysql-connector-java" % "8.0.15",
+  "com.h2database" % "h2" % "1.4.200" // replace `${H2_VERSION}` with an actual version number
+  //"mysql" % "mysql-connector-java" % "8.0.15",
 )

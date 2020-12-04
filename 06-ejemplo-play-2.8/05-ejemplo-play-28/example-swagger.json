@@ -1,0 +1,275 @@
+{
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "index",
+        "tags": [
+          "routes"
+        ]
+      }
+    },
+    "/mapa": {
+      "get": {
+        "operationId": "mapa",
+        "tags": [
+          "Object"
+        ],
+        "summary": "get an Map JSON object",
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/objeto": {
+      "post": {
+        "operationId": "cogeObjeto",
+        "tags": [
+          "Object"
+        ],
+        "summary": "post an JSON object",
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "get": {
+        "operationId": "objeto",
+        "tags": [
+          "Object"
+        ],
+        "summary": "get an object",
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/models.Person"
+            }
+          }
+        }
+      }
+    },
+    "/persona": {
+      "post": {
+        "operationId": "cogePersona",
+        "tags": [
+          "Persona"
+        ],
+        "summary": "post an JSON Persona object",
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/models.Person"
+            }
+          }
+        }
+      }
+    },
+    "/person": {
+      "post": {
+        "operationId": "addUser",
+        "tags": [
+          "Persona"
+        ],
+        "summary": "post an JSON Persona object",
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/models.Person"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "index",
+        "tags": [
+          "Persona"
+        ],
+        "summary": "get an JSON Persona object",
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/models.Person"
+            }
+          }
+        }
+      }
+    },
+    "/person/{id}": {
+      "get": {
+        "operationId": "deleteUser",
+        "tags": [
+          "Persona"
+        ],
+        "summary": "post an JSON Persona object By ID",
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int64",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/api/person": {
+      "post": {
+        "operationId": "add",
+        "tags": [
+          "Persona"
+        ],
+        "summary": "post an JSON Persona object",
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "get": {
+        "operationId": "index",
+        "tags": [
+          "routes"
+        ]
+      }
+    },
+    "/api/person/{id}": {
+      "get": {
+        "operationId": "getUser",
+        "tags": [
+          "routes"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int64",
+            "required": true
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "deleteUser",
+        "tags": [
+          "routes"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int64",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/api/mongo/post": {
+      "post": {
+        "operationId": "add",
+        "tags": [
+          "routes"
+        ]
+      },
+      "get": {
+        "operationId": "listPost",
+        "tags": [
+          "routes"
+        ]
+      }
+    },
+    "/api/mongo/post/{id}": {
+      "post": {
+        "operationId": "update",
+        "tags": [
+          "routes"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "reactivemongo.api.bson.bsonobjectid",
+            "required": true
+          }
+        ]
+      },
+      "get": {
+        "operationId": "read",
+        "tags": [
+          "routes"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "reactivemongo.api.bson.bsonobjectid",
+            "required": true
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "delete",
+        "tags": [
+          "routes"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "reactivemongo.api.bson.bsonobjectid",
+            "required": true
+          }
+        ]
+      }
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "definitions": {
+    "models.Person": {
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "country"
+      ]
+    }
+  },
+  "swagger": "2.0",
+  "info": {
+    "description": "Power your music",
+    "title": "Poweramp API",
+    "version": "1.0"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "tags": [
+    {
+      "name": "routes"
+    }
+  ]
+}

@@ -4,25 +4,170 @@
 # ~~~~
 
 # An example controller showing a sample home page
+ ###
+ #  summary: get an simple JSON object
+ #  tags:
+ #    - Object
+ #  responses:
+ #    200:
+ #      description: success
+ #
+ ###
 GET     /                           controllers.HomeController.index
+ ###
+ #  summary: get an Map JSON object
+ #  tags:
+ #    - Object
+ #  responses:
+ #    200:
+ #      description: success
+ #
+ ###
 GET     /mapa                           controllers.HomeController.mapa
+ ###
+ #  summary: get an object
+ #  tags:
+ #    - Object
+ #  responses:
+ #    200:
+ #      description: success
+ #      schema:
+ #        $ref: '#/definitions/models.Person'
+ ###
 GET     /objeto                           controllers.HomeController.objeto
+###
+ #  summary: post an JSON object
+ #  tags:
+ #    - Object
+ #  responses:
+ #    200:
+ #      description: success
+ ###
 POST     /objeto                           controllers.HomeController.cogeObjeto
+###
+ #  summary: post an JSON Persona object
+ #  tags:
+ #    - Persona
+ #  responses:
+ #    200:
+ #      description: success
+ #      schema:
+ #        $ref: '#/definitions/models.Person'
+ ###
 POST     /persona                           controllers.HomeController.cogePersona
-
+###
+ #  summary: get an JSON Persona object
+ #  tags:
+ #    - Persona
+ #  responses:
+ #    200:
+ #      description: success
+ #      schema:
+ #        $ref: '#/definitions/models.Person'
+ ###
 GET     /person                       controllers.PersonController.index
+###
+ #  summary: post an JSON Persona object
+ #  tags:
+ #    - Persona
+ #  responses:
+ #    200:
+ #      description: success
+ #      schema:
+ #        $ref: '#/definitions/models.Person'
+ ###
 POST     /person                       controllers.PersonController.addUser
+###
+ #  summary: post an JSON Persona object By ID
+ #  tags:
+ #    - Persona
+ #  responses:
+ #    200:
+ #      description: success
+ ###
 GET     /person/:id                       controllers.PersonController.deleteUser(id: Long)
 # MysqL API
+###
+ #  summary: get an JSON Persona object
+ #  tags:
+ #    - Persona
+ #  responses:
+ #    200:
+ #      description: success
+ ###
 GET     /api/person                       controllers.RestController.index
+###
+ #  summary: post an JSON Persona object
+ #  tags:
+ #    - Persona
+ #  responses:
+ #    200:
+ #      description: success
+ ###
 POST     /api/person                       controllers.RestController.add
+###
+ #  summary: post an JSON Persona object
+ #  tags:
+ #    - Persona
+ #  responses:
+ #    200:
+ #      description: success
+ ###
 GET     /api/person/:id                      controllers.RestController.getUser(id: Long)
+###
+ #  summary: post an JSON Persona object
+ #  tags:
+ #    - Persona
+ #  responses:
+ #    200:
+ #      description: success
+ ###
 DELETE     /api/person/:id                      controllers.RestController.deleteUser(id: Long)
 # Mongo API
+###
+ #  summary: post an JSON Persona object
+ #  tags:
+ #    - Persona
+ #  responses:
+ #    200:
+ #      description: success
+ ###
 GET     /api/mongo/post                       controllers.RestMongoController.listPost
+###
+ #  summary: post an JSON Persona object
+ #  tags:
+ #    - Persona
+ #  responses:
+ #    200:
+ #      description: success
+ ###
 POST     /api/mongo/post                       controllers.RestMongoController.add
+###
+ #  summary: post an JSON Persona object
+ #  tags:
+ #    - Persona
+ #  responses:
+ #    200:
+ #      description: success
+ ###
 GET     /api/mongo/post/:id                      controllers.RestMongoController.read(id:reactivemongo.api.bson.BSONObjectID)
+###
+ #  summary: post an JSON Persona object
+ #  tags:
+ #    - Persona
+ #  responses:
+ #    200:
+ #      description: success
+ ###
 POST     /api/mongo/post/:id                      controllers.RestMongoController.update(id: reactivemongo.api.bson.BSONObjectID)
+###
+ #  summary: post an JSON Persona object
+ #  tags:
+ #    - Persona
+ #  responses:
+ #    200:
+ #      description: success
+ ###
 DELETE     /api/mongo/post/:id                      controllers.RestMongoController.delete(id: reactivemongo.api.bson.BSONObjectID)
 
 ### NoDocs ###

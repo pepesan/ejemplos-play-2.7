@@ -17,9 +17,10 @@ libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "4.0.2" % Test
 libraryDependencies += "com.typesafe.play" %% "play-json" % "2.8.1"
 libraryDependencies ++= Seq(
-  "com.typesafe.play" %% "play-slick" % "4.0.1",
-  "com.typesafe.play" %% "play-slick-evolutions" % "4.0.1",
-  "mysql" % "mysql-connector-java" % "8.0.16",
+  "com.typesafe.play" %% "play-slick" % "5.0.0",
+  "com.typesafe.play" %% "play-slick-evolutions" % "5.0.0",
+  "com.h2database" % "h2" % "1.4.200" // replace `${H2_VERSION}` with an actual version number
+  //"mysql" % "mysql-connector-java" % "8.0.16",
 )
 libraryDependencies += "org.reactivemongo" % "play2-reactivemongo_2.12" % "0.20.4-play28"
 
