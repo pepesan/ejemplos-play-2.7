@@ -5,6 +5,7 @@ import play.api.data.Form
 import play.api.data.Forms.mapping
 import play.api.data.Forms._
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
+import play.api.libs.json.{Format, Json, Writes}
 import slick.jdbc.JdbcProfile
 
 import scala.concurrent.{ExecutionContext, Future}
@@ -35,15 +36,10 @@ class UserTableDef(tag: Tag) extends Table[User](tag, "user") {
   def mobile = column[Long]("mobile")
   def email = column[String]("email")
 
-  override def * =
-    (id, firstName, lastName, mobile, email) <>(User.tupled, User.unapply)
+  override def * = (id, firstName, lastName, mobile, email) <>(User.tupled, User.unapply)
 }
 
-class Users @Inject() (
-                        protected val dbConfigProvider: DatabaseConfigProvider
-                      )(
-                        implicit executionContext: ExecutionContext
-                      ) extends HasDatabaseConfigProvider[JdbcProfile] {
+class Users @Inject() (protected val dbConfigProvider: DatabaseConfigProvider)(implicit executionContext: ExecutionContext) extends HasDatabaseConfigProvider[JdbcProfile] {
 
   val users = TableQuery[UserTableDef]
 
@@ -52,7 +48,12 @@ class Users @Inject() (
       case ex: Exception => ex.getCause.getMessage
     }
   }
-
+  /*
+  def edit(id: Long,user : User): Future[Option[User]] = {
+    dbConfig.db.run(users.filter(_.id === id).update)
+  }
+  *
+  */
   def delete(id: Long): Future[Int] = {
     dbConfig.db.run(users.filter(_.id === id).delete)
   }
@@ -66,3 +67,9 @@ class Users @Inject() (
   }
 
 }
+
+object Formatters {
+  implicit val userFormat = Json.format[User]
+}
+
+

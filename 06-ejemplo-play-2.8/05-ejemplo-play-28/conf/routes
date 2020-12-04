@@ -5,6 +5,28 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
+GET     /mapa                           controllers.HomeController.mapa
+GET     /objeto                           controllers.HomeController.objeto
+POST     /objeto                           controllers.HomeController.cogeObjeto
+POST     /persona                           controllers.HomeController.cogePersona
 
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET     /person                       controllers.PersonController.index
+POST     /person                       controllers.PersonController.addUser
+GET     /person/:id                       controllers.PersonController.deleteUser(id: Long)
+# MysqL API
+GET     /api/person                       controllers.RestController.index
+POST     /api/person                       controllers.RestController.add
+GET     /api/person/:id                      controllers.RestController.getUser(id: Long)
+DELETE     /api/person/:id                      controllers.RestController.deleteUser(id: Long)
+# Mongo API
+GET     /api/mongo/post                       controllers.RestMongoController.listPost
+POST     /api/mongo/post                       controllers.RestMongoController.add
+GET     /api/mongo/post/:id                      controllers.RestMongoController.read(id:reactivemongo.api.bson.BSONObjectID)
+POST     /api/mongo/post/:id                      controllers.RestMongoController.update(id: reactivemongo.api.bson.BSONObjectID)
+DELETE     /api/mongo/post/:id                      controllers.RestMongoController.delete(id: reactivemongo.api.bson.BSONObjectID)
+
+### NoDocs ###
+GET   /docs/swagger-ui/*file        controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)
+
+### NoDocs ###
+GET   /assets/*file                 controllers.Assets.versioned(path="/public", file: Asset)
